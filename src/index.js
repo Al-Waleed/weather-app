@@ -10,7 +10,7 @@ async function fetchWeatherApi(city) {
   return await response.json();
 }
 
-async function analyseWeatherData() {
+async function processData() {
   const weather = await fetchWeatherApi(city);
   const today = {
     condition: weather.current.condition.text,
@@ -34,4 +34,12 @@ async function analyseWeatherData() {
   return { today, tomorrow, afterTomorrow };
 }
 
-async function displayWeather() {}
+async function displayWeather() {
+  const weatherInfo = await processData();
+
+  console.log(weatherInfo.today)
+  console.log(weatherInfo.tomorrow)
+  console.log(weatherInfo.afterTomorrow);
+}
+
+displayWeather()
