@@ -37,7 +37,7 @@ button {
   cursor: pointer;
 }
 
-::placeholder{
+::placeholder {
   color: #fff;
 }
 #nav {
@@ -47,7 +47,6 @@ button {
   align-items: center;
   font-size: 30px;
   color: #fff;
-
 }
 
 #today {
@@ -60,4 +59,18 @@ button {
 
 #after-tomorrow {
   grid-area: after;
+}
+
+#today,
+#tomorrow,
+#after-tomorrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+h1,
+h2 {
+  margin: 0;
+  text-align: center;
 }
