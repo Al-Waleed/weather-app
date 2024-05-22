@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 8px;
   overflow: hidden;
+  background-color: #1b1a55;
 }
 
 #main {
@@ -20,12 +21,13 @@ body {
 
 #main > div {
   padding: 8px;
-  background-color: blue;
+  background-color: #070f2b;
   border-radius: 8px;
+  color: #9290c3;
 }
 button,
 input {
-  background-color: #9365db;
+  background-color: #535c91;
   border: none;
   border-radius: 0.25rem;
   padding: 2px 6px;
@@ -35,10 +37,12 @@ input {
 }
 button {
   cursor: pointer;
+  opacity: 0.9;
 }
 
 ::placeholder {
   color: #fff;
+  opacity: 0.9;
 }
 #nav {
   grid-area: nav;
