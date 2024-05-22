@@ -3,29 +3,54 @@ import processData from "./weatherData";
 export default async function displayWeather(city) {
   const weatherInfo = await processData(city);
 
-  console.log(
-    `${weatherInfo.location.region}, ${weatherInfo.location.country}`
-  );
-  console.log(weatherInfo.location.dateTime);
+  const countryHeader = document.getElementById("country");
+  const dateTime = document.getElementById("date-time");
+  countryHeader.textContent = `${weatherInfo.location.region}, ${weatherInfo.location.country}`;
+  dateTime.textContent = weatherInfo.location.dateTime;
 
-  console.log(processDay(weatherInfo.today.date));
-  console.log(weatherInfo.today.date);
-  console.log(weatherInfo.today.temp);
-  console.log(weatherInfo.today.condition);
-  console.log(weatherInfo.today.feelsLike);
-  console.log(weatherInfo.today.humidity);
+  const todayRegion = document.getElementById("today-region");
+  const todayDay = todayRegion.nextElementSibling;
+  const todayDate = todayDay.nextElementSibling;
+  const todayTemp = document.getElementById("today-temp");
+  const todayCondition = todayTemp.nextElementSibling;
+  const todayHumidity = todayCondition.nextElementSibling;
+  const todayFeelsLike = todayHumidity.nextElementSibling;
 
-  console.log(processDay(weatherInfo.tomorrow.date));
-  console.log(weatherInfo.tomorrow.date);
-  console.log(weatherInfo.tomorrow.temp);
-  console.log(weatherInfo.tomorrow.condition);
-  console.log(weatherInfo.tomorrow.humidity);
+  todayRegion.textContent = weatherInfo.location.region;
+  todayDay.textContent = processDay(weatherInfo.today.date);
+  todayDate.textContent = weatherInfo.today.date;
+  todayTemp.textContent = weatherInfo.today.temp;
+  todayCondition.textContent = weatherInfo.today.condition;
+  todayHumidity.textContent = `Humidity: ${weatherInfo.today.humidity}%`;
+  todayFeelsLike.textContent = `Feels like: ${weatherInfo.today.feelsLike}`;
 
-  console.log(processDay(weatherInfo.afterTomorrow.date));
-  console.log(weatherInfo.afterTomorrow.date);
-  console.log(weatherInfo.afterTomorrow.temp);
-  console.log(weatherInfo.afterTomorrow.condition);
-  console.log(weatherInfo.afterTomorrow.humidity);
+  const tomorrowRegion = document.getElementById("tomorrow-region");
+  const tomorrowDay = tomorrowRegion.nextElementSibling;
+  const tomorrowDate = tomorrowDay.nextElementSibling;
+  const tomorrowTemp = document.getElementById("tomorrow-temp");
+  const tomorrowCondition = tomorrowTemp.nextElementSibling;
+  const tomorrowHumidity = tomorrowCondition.nextElementSibling;
+
+  tomorrowRegion.textContent = weatherInfo.location.region;
+  tomorrowDay.textContent = processDay(weatherInfo.tomorrow.date);
+  tomorrowDate.textContent = weatherInfo.tomorrow.date;
+  tomorrowTemp.textContent = weatherInfo.tomorrow.temp;
+  tomorrowCondition.textContent = weatherInfo.tomorrow.condition;
+  tomorrowHumidity.textContent = `Humidity: ${weatherInfo.tomorrow.humidity}%`;
+
+  const afterTomorrowRegion = document.getElementById("after-region");
+  const afterTomorrowDay = afterTomorrowRegion.nextElementSibling;
+  const afterTomorrowDate = afterTomorrowDay.nextElementSibling;
+  const afterTomorrowTemp = document.getElementById("after-temp");
+  const afterTomorrowCondition = afterTomorrowTemp.nextElementSibling;
+  const afterTomorrowHumidity = afterTomorrowCondition.nextElementSibling;
+
+  afterTomorrowRegion.textContent = weatherInfo.location.region;
+  afterTomorrowDay.textContent = processDay(weatherInfo.afterTomorrow.date);
+  afterTomorrowDate.textContent = weatherInfo.afterTomorrow.date;
+  afterTomorrowTemp.textContent = weatherInfo.afterTomorrow.temp;
+  afterTomorrowCondition.textContent = weatherInfo.afterTomorrow.condition;
+  afterTomorrowHumidity.textContent = `Humidity: ${weatherInfo.afterTomorrow.humidity}%`;
 }
 
 function processDay(date) {
