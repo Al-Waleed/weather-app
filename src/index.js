@@ -1,6 +1,14 @@
 import "./style.css";
 
-const city = prompt("Enter city");
+const userInput = document.querySelector("input");
+const searchButton = document.querySelector("button");
+let city;
+
+searchButton.addEventListener("click", (event) => {
+  city = userInput.value;
+  displayWeather();
+  event.preventDefault();
+});
 
 async function fetchWeatherApi(city) {
   const response = await fetch(
@@ -42,6 +50,11 @@ async function processData() {
 async function displayWeather() {
   const weatherInfo = await processData();
 
+  console.log(
+    `${weatherInfo.location.region}, ${weatherInfo.location.country}`
+  );
+  console.log(weatherInfo.location.dateTime);
+
   console.log(processDay(weatherInfo.today.date));
   console.log(weatherInfo.today.date);
   console.log(weatherInfo.today.temp);
@@ -61,8 +74,6 @@ async function displayWeather() {
   console.log(weatherInfo.afterTomorrow.condition);
   console.log(weatherInfo.afterTomorrow.humidity);
 }
-
-displayWeather();
 
 function processDay(date) {
   const day = new Date(date);
