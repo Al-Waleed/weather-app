@@ -31,7 +31,12 @@ async function processData() {
     temp: weather.forecast.forecastday[2].day.avgtemp_c,
     humidity: weather.forecast.forecastday[2].day.avghumidity,
   };
-  return { today, tomorrow, afterTomorrow };
+  const location = {
+    country: weather.location.country,
+    dateTime: weather.location.localtime,
+    region: weather.location.name,
+  };
+  return { today, tomorrow, afterTomorrow, location };
 }
 
 async function displayWeather() {
