@@ -37,9 +37,38 @@ async function processData() {
 async function displayWeather() {
   const weatherInfo = await processData();
 
-  console.log(weatherInfo.today)
-  console.log(weatherInfo.tomorrow)
-  console.log(weatherInfo.afterTomorrow);
+  console.log(processDay(weatherInfo.today.date));
+  console.log(weatherInfo.today.date);
+  console.log(weatherInfo.today.temp);
+  console.log(weatherInfo.today.condition);
+  console.log(weatherInfo.today.feelsLike);
+  console.log(weatherInfo.today.humidity);
+
+  console.log(processDay(weatherInfo.tomorrow.date));
+  console.log(weatherInfo.tomorrow.date);
+  console.log(weatherInfo.tomorrow.temp);
+  console.log(weatherInfo.tomorrow.condition);
+  console.log(weatherInfo.tomorrow.humidity);
+
+  console.log(processDay(weatherInfo.afterTomorrow.date));
+  console.log(weatherInfo.afterTomorrow.date);
+  console.log(weatherInfo.afterTomorrow.temp);
+  console.log(weatherInfo.afterTomorrow.condition);
+  console.log(weatherInfo.afterTomorrow.humidity);
 }
 
-displayWeather()
+displayWeather();
+
+function processDay(date) {
+  const day = new Date(date);
+  const week = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "saturday",
+  ];
+  return week[day.getDay()];
+}
