@@ -19,10 +19,10 @@ export default async function displayWeather(city) {
   todayRegion.textContent = weatherInfo.location.region;
   todayDay.textContent = processDay(weatherInfo.today.date);
   todayDate.textContent = weatherInfo.today.date;
-  todayTemp.textContent = weatherInfo.today.temp;
+  todayTemp.textContent = `${weatherInfo.today.temp}\u00B0`;
   todayCondition.textContent = weatherInfo.today.condition;
   todayHumidity.textContent = `Humidity: ${weatherInfo.today.humidity}%`;
-  todayFeelsLike.textContent = `Feels like: ${weatherInfo.today.feelsLike}`;
+  todayFeelsLike.textContent = `Feels like: ${weatherInfo.today.feelsLike}\u00B0`;
 
   const tomorrowRegion = document.getElementById("tomorrow-region");
   const tomorrowDay = tomorrowRegion.nextElementSibling;
@@ -34,7 +34,7 @@ export default async function displayWeather(city) {
   tomorrowRegion.textContent = weatherInfo.location.region;
   tomorrowDay.textContent = processDay(weatherInfo.tomorrow.date);
   tomorrowDate.textContent = weatherInfo.tomorrow.date;
-  tomorrowTemp.textContent = weatherInfo.tomorrow.temp;
+  tomorrowTemp.textContent = `${weatherInfo.tomorrow.temp}\u00B0`;
   tomorrowCondition.textContent = weatherInfo.tomorrow.condition;
   tomorrowHumidity.textContent = `Humidity: ${weatherInfo.tomorrow.humidity}%`;
 
@@ -48,7 +48,7 @@ export default async function displayWeather(city) {
   afterTomorrowRegion.textContent = weatherInfo.location.region;
   afterTomorrowDay.textContent = processDay(weatherInfo.afterTomorrow.date);
   afterTomorrowDate.textContent = weatherInfo.afterTomorrow.date;
-  afterTomorrowTemp.textContent = weatherInfo.afterTomorrow.temp;
+  afterTomorrowTemp.textContent = `${weatherInfo.afterTomorrow.temp}\u00B0`;
   afterTomorrowCondition.textContent = weatherInfo.afterTomorrow.condition;
   afterTomorrowHumidity.textContent = `Humidity: ${weatherInfo.afterTomorrow.humidity}%`;
 }
@@ -62,7 +62,7 @@ function processDay(date) {
     "Wednesday",
     "Thursday",
     "Friday",
-    "saturday",
+    "Saturday",
   ];
   return week[day.getDay()];
 }
